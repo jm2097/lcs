@@ -12,6 +12,7 @@ export class UserService {
 
 	async getUserById(id: number): Promise<UserDto> {
 		const user = await this.prisma.user.findUnique({
+			include: { skills: true },
 			where: { id },
 		});
 
